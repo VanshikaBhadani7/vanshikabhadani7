@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - E-Commerce Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+        
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .checkout {
+            padding: 20px;
+        }
+
+        .checkout h1 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #333;
+            background: linear-gradient(45deg, #ff6f61, #6a1b9a, #00bcd4);
+            background-size: 300% 300%;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            animation: gradientAnimation 5s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        .checkout .summary {
+            margin-bottom: 20px;
+        }
+
+        .checkout .summary table {
+            width: 100%;
+            border-collapse: collapse;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        .checkout .summary th, .checkout .summary td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .checkout .summary th {
+            background-color: #f4f4f4;
+        }
+
+        .checkout form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s forwards;
+        }
+
+        .checkout form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .checkout form input[type="text"], 
+        .checkout form input[type="email"], 
+        .checkout form input[type="number"], 
+        .checkout form select,
+        .checkout form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .checkout form input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .checkout form input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        .payment-methods {
+            margin-top: 20px;
+        }
+
+        .payment-methods label {
+            display: block;
+            font-weight: bold;
+        }
+
+        .payment-methods input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .payment-methods div {
+            margin-top: 10px;
+        }
+
+        .discount {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .discount input[type="text"] {
+            width: 200px;
+            display: inline-block;
+            margin-right: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .discount button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+
+        .discount button:hover {
+            background-color: #0056b3;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html">Cart</a>
+    <a href="checkout.html">Checkout</a>
+    <a href="contact.html">Contact</a>
+</div>
+
+<!-- Checkout Section -->
+<div class="checkout">
+    <h1>Checkout</h1>
+
+    <!-- Cart Summary -->
+    <div class="summary">
+        <h2>Order Summary</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="order-summary">
+                <!-- Order items will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+        <div class="total">
+            <strong>Total Price: $<span id="order-total">0.00</span></strong>
+        </div>
+        <div class="discount">
+            <input type="text" id="coupon-code" placeholder="Enter coupon code">
+            <button id="apply-coupon">Apply Coupon</button>
+            <div id="discount-message"></div>
+        </div>
+    </div>
+
+    <!-- Checkout Form -->
+    <form id="checkout-form" onsubmit="handleSubmit(event)">
+        <label for="full-name">Full Name</label>
+        <input type="text" id="full-name" name="full-name" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="address">Shipping Address</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" required>
+
+        <label for="zip">Zip Code</label>
+        <input type="text" id="zip" name="zip" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" name="phone" required>
+
+        <div class="payment-methods">
+            <label>Payment Method</label>
+            <input type="radio" id="credit-card" name="payment-method" value="credit-card" checked>
+            <label for="credit-card">Credit Card</label>
+            <div id="credit-card-info">
+                <label for="card-number">Credit Card Number</label>
+                <input type="number" id="card-number" name="card-number" required>
+
+                <label for="expiry-date">Expiry Date (MM/YY)</label>
+                <input type="text" id="expiry-date" name="expiry-date" required>
+
+                <label for="cvv">CVV</label>
+                <input type="number" id="cvv" name="cvv" required>
+            </div>
+
+            <input type="radio" id="paypal" name="payment-method" value="paypal">
+            <label for="paypal">PayPal</label>
+            <div id="paypal-info" style="display: none;">
+                <label for="paypal-email">PayPal Email Address</label>
+                <input type="email" id="paypal-email" name="paypal-email" required>
+            </div>
+        </div>
+
+        <input type="submit" value="Place Order">
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const orderSummary = document.getElementById('order-summary');
+        const orderTotalElement = document.getElementById('order-total');
+        const applyCouponButton = document.getElementById('apply-coupon');
+        const couponCodeInput = document.getElementById('coupon-code');
+        const discountMessage = document.getElementById('discount-message');
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let totalPrice = 0;
+        let discount = 0; // Store discount as a percentage
+
+        function updateOrderSummary() {
+            orderSummary.innerHTML = '';
+            totalPrice = 0;
+
+            cart.forEach((item) => {
+                const row = document.createElement('tr');
+                
+                row.innerHTML = `
+                    <td>${item.product}</td>
+                    <td>$${item.price.toFixed(2)}</td>
+                    <td>${item.quantity}</td>
+                    <td>$${(item.price * item.quantity).toFixed(2)}</td>
+                `;
+                
+                orderSummary.appendChild(row);
+                totalPrice += item.price * item.quantity;
+            });
+
+            // Apply discount if available
+            if (discount > 0) {
+                totalPrice *= (1 - discount / 100);
+                discountMessage.textContent = `Discount Applied: ${discount}% off`;
+            } else {
+                discountMessage.textContent = '';
+            }
+
+            orderTotalElement.textContent = totalPrice.toFixed(2);
+        }
+
+        applyCouponButton.addEventListener('click', () => {
+            const couponCode = couponCodeInput.value.trim();
+            if (couponCode === 'vanshi') {
+                discount = 50; // 50% discount
+            } else {
+                discount = 0;
+                discountMessage.textContent = 'Invalid coupon code.';
+            }
+            updateOrderSummary();
+        });
+
+        // Show/hide payment fields based on payment method selected
+        document.querySelectorAll('input[name="payment-method"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const paymentMethod = this.value;
+                document.getElementById('credit-card-info').style.display = paymentMethod === 'credit-card' ? 'block' : 'none';
+                document.getElementById('paypal-info').style.display = paymentMethod === 'paypal' ? 'block' : 'none';
+            });
+        });
+
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Perform any additional actions here, such as form validation or AJAX requests
+
+            // Redirect to the new page
+            window.location.href = 'order-confirmation.html';
+        }
+
+        updateOrderSummary();
+    });
+</script>
+
+</body>
+</html>

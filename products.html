@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - E-Commerce Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .section {
+            padding: 20px;
+        }
+
+        .home-banner {
+            text-align: center;
+            background: linear-gradient(135deg, #f06, #f79);
+            color: white;
+            padding: 60px 20px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .home-banner::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: move 5s linear infinite;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateX(-50%) translateY(-50%);
+            }
+            100% {
+                transform: translateX(50%) translateY(50%);
+            }
+        }
+
+        .home-banner h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .home-banner p {
+            font-size: 1.2em;
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            width: calc(25% - 20px);
+            box-sizing: border-box;
+            text-align: center;
+            background: #f9f9f9;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .add-to-cart {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .add-to-cart:hover {
+            background-color: #218838;
+        }
+
+        @media (max-width: 768px) {
+            .product {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product {
+                width: calc(100% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html">Cart</a>
+    <a href="contact.html">Contact</a>
+</div>
+
+<!-- Home Section -->
+<div class="section" id="home">
+    <div class="home-banner">
+        <h1>Health Care Products</h1>
+        <p>Discover our latest collections and exclusive offers!</p>
+    </div>
+    <!-- Featured Products -->
+    <h3 style="text-align: center;">Health Care Products</h3>
+    <div class="products">
+        <!-- List of 20 health care products -->
+        <div class="product">
+            <img src="https://cdn.tirabeauty.com/v2/billowing-snowflake-434234/tira-p/wrkr/products/pictures/item/free/resize-w:540/1107018/-DjjeRbolc-8906087775690_1.jpg" alt="Health Care Product 1">
+            <h3>Vitamin C Serum</h3>
+            <p class="price">$15</p>
+            <button class="add-to-cart" data-product="Vitamin C Serum" data-price="15">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://cdn.tirabeauty.com/v2/billowing-snowflake-434234/tira-p/wrkr/products/pictures/item/free/resize-w:540/949753/Zy6ZIUEPKG-949753_1.jpg" alt="Health Care Product 2">
+            <h3>Multivitamin Tablets</h3>
+            <p class="price">$25</p>
+            <button class="add-to-cart" data-product="Multivitamin Tablets" data-price="25">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://i5.walmartimages.com/asr/60ef5782-2ea1-429c-a9cd-d0414f609d11_1.4fb5357ebb29fef237f97bbc35f8deb1.jpeg" alt="Health Care Product 3">
+            <h3>Omega-3 Fish Oil</h3>
+            <p class="price">$35</p>
+            <button class="add-to-cart" data-product="Omega-3 Fish Oil" data-price="35">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://cdn.lifehack.org/wp-content/uploads/2020/08/33.jpg" alt="Health Care Product 4">
+            <h3>Probiotic Supplements</h3>
+            <p class="price">$45</p>
+            <button class="add-to-cart" data-product="Probiotic Supplements" data-price="45">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://shop.tcdirect.co.za/content/images/thumbs/6333f3e91d006f7baa666618_joint-support-capsules-60s_550.png" alt="Health Care Product 5">
+            <h3>Joint Support Capsules</h3>
+            <p class="price">$55</p>
+            <button class="add-to-cart" data-product="Joint Support Capsules" data-price="55">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://i5.walmartimages.com/asr/eba8b26e-aa15-46d8-b47e-0131d1157c30.6cd2547164a2556f7690d676fabad0a3.jpeg" alt="Health Care Product 6">
+            <h3>Melatonin Sleep Aid</h3>
+            <p class="price">$65</p>
+            <button class="add-to-cart" data-product="Melatonin Sleep Aid" data-price="65">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://th.bing.com/th/id/OIP.qN9PKjIPPShe7kOWde4o4gAAAA?rs=1&pid=ImgDetMain" alt="Health Care Product 7">
+            <h3>Anti-Aging Cream</h3>
+            <p class="price">$75</p>
+            <button class="add-to-cart" data-product="Anti-Aging Cream" data-price="75">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.cscvitamins.com/wp-content/uploads/2021/02/immune-support-powder-front.jpg" alt="Health Care Product 8">
+            <h3>Immune Support Powder</h3>
+            <p class="price">$85</p>
+            <button class="add-to-cart" data-product="Immune Support Powder" data-price="85">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://happyleefitness.com/wp-content/uploads/2015/06/energy-boost.jpg" alt="Health Care Product 9">
+            <h3>Energy Boost Capsules</h3>
+            <p class="price">$95</p>
+            <button class="add-to-cart" data-product="Energy Boost Capsules" data-price="95">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://supliful.com/_next/image?url=https:%2F%2Fsupliful.s3.amazonaws.com%2Fproducts%2Fimages%2F20220824133915-vox4dige-digestive-enzyme-pro-blend.png&w=992&q=75" alt="Health Care Product 10">
+            <h3>Digestive Enzyme Blend</h3>
+            <p class="price">$105</p>
+            <button class="add-to-cart" data-product="Digestive Enzyme Blend" data-price="105">Add to Cart</button>
+        </div>
+        <!-- Additional 10 products -->
+        <div class="product">
+            <img src="https://i5.walmartimages.com/asr/45e98000-eaf6-4fc3-9fb5-f21b81c5ad16.463be97ef0f4ac08904fa03e4f2385b5.jpeg " alt="Health Care Product 11">
+            <h3>Calcium Tablets</h3>
+            <p class="price">$20</p>
+            <button class="add-to-cart" data-product="Calcium Tablets" data-price="20">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://cdn.tirabeauty.com/v2/billowing-snowflake-434234/tira-p/wrkr/products/pictures/item/free/resize-w:540/1055873/UCwYZGq6ia-1055873-1.jpg " alt="Health Care Product 12">
+            <h3>Magnesium Supplements</h3>
+            <p class="price">$30</p>
+            <button class="add-to-cart" data-product="Magnesium Supplements" data-price="30">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://cdn.tirabeauty.com/v2/billowing-snowflake-434234/tira-p/wrkr/products/pictures/item/free/original/954864/eCak21KTe7-954864-1.jpg?dpr=1 " alt="Health Care Product 13">
+            <h3>Vitamin D3 Drops</h3>
+            <p class="price">$40</p>
+            <button class="add-to-cart" data-product="Vitamin D3 Drops" data-price="40">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://cdn.tirabeauty.com/v2/billowing-snowflake-434234/tira-p/wrkr/products/pictures/item/free/original/1091878/QHwVsThmUW-8906734454640_1.jpg?dpr=1" alt="Health Care Product 14">
+            <h3>Green Tea Extract</h3>
+            <p class="price">$50</p>
+            <button class="add-to-cart" data-product="Green Tea Extract" data-price="50">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://cdn.tirabeauty.com/v2/billowing-snowflake-434234/tira-p/wrkr/products/pictures/item/free/original/1137540/JhZWQS-qbM-1137540-1.jpg?dpr=1" alt="Health Care Product 15">
+            <h3>Collagen Powder</h3>
+            <p class="price">$60</p>
+            <button class="add-to-cart" data-product="Collagen Powder" data-price="60">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://i5.walmartimages.com/asr/eec5020c-fe50-46cb-b4ae-579e3deda7c2.ea65dd599f62dd2462c628fb3f331eac.jpeg" alt="Health Care Product 16">
+            <h3>Zinc Tablets</h3>
+            <p class="price">$70</p>
+            <button class="add-to-cart" data-product="Zinc Tablets" data-price="70">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://cdn.tirabeauty.com/v2/billowing-snowflake-434234/tira-p/wrkr/products/pictures/item/free/original/929214/8XBqHGeuLs-929214_1.jpg?dpr=1" alt="Health Care Product 17">
+            <h3>Hair Growth Vitamins</h3>
+            <p class="price">$80</p>
+            <button class="add-to-cart" data-product="Hair Growth Vitamins" data-price="80">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://cdn.tirabeauty.com/v2/billowing-snowflake-434234/tira-p/wrkr/products/pictures/item/free/original/mamaearth/1005422/0/KpIPMXGMhG-2VvPAJpeiO-1.jpg?dpr=1" alt="Health Care Product 18">
+            <h3>Turmeric Curcumin</h3>
+            <p class="price">$90</p>
+            <button class="add-to-cart" data-product="Turmeric Curcumin" data-price="90">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://l-arginine.com/wp-content/uploads/joint-health-4.png" alt="Health Care Product 19">
+            <h3>Joint Health Formula</h3>
+            <p class="price">$100</p>
+            <button class="add-to-cart" data-product="Joint Health Formula" data-price="100">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://cdn.aldi-digital.co.uk/Herbal-Sleep-Aid-30-Pack-A.jpg?o=n%24MAJgxDQ7lYTZu01C0y8CKpeJoj&V=fhUS" alt="Health Care Product 20">
+            <h3>Herbal Sleep Aid</h3>
+            <p class="price">$110</p>
+            <button class="add-to-cart" data-product="Herbal Sleep Aid" data-price="110">Add to Cart</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const cartButtons = document.querySelectorAll('.add-to-cart');
+
+        cartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const product = button.getAttribute('data-product');
+                const price = button.getAttribute('data-price');
+                addToCart(product, parseFloat(price));
+            });
+        });
+
+        function addToCart(product, price) {
+            // Get cart from localStorage or initialize empty array
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Find if the product already exists in the cart
+            let existingProduct = cart.find(item => item.product === product);
+
+            if (existingProduct) {
+                // If the product exists, update its quantity
+                existingProduct.quantity += 1;
+            } else {
+                // If the product does not exist, add it to the cart
+                cart.push({
+                    product: product,
+                    price: price,
+                    quantity: 1
+                });
+            }
+
+            // Save updated cart to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert(`${product} has been added to your cart at $${price}`);
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - E-Commerce Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .cart {
+            padding: 20px;
+        }
+
+        .cart h1 {
+            text-align: center;
+            font-size: 2.5em;
+            background: linear-gradient(45deg, #ff6f61, #6a1b9a, #00bcd4);
+            background-size: 300% 300%;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            animation: gradientAnimation 3s ease infinite, textGlow 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        @keyframes textGlow {
+            from { text-shadow: 0 0 5px rgba(255, 255, 255, 0.7); }
+            to { text-shadow: 0 0 15px rgba(255, 255, 255, 1); }
+        }
+
+        .cart table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            opacity: 0; /* Start hidden for fade-in effect */
+            animation: fadeIn 1s forwards; /* Fade-in animation */
+        }
+
+        .cart table, .cart th, .cart td {
+            border: 1px solid #ddd;
+        }
+
+        .cart th, .cart td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        .cart th {
+            background-color: #f4f4f4;
+        }
+
+        .cart button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .cart button:hover {
+            background-color: #c82333;
+        }
+
+        .total {
+            text-align: right;
+            font-size: 1.2em;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .checkout-button {
+            text-align: right; /* Aligning the checkout button to the right */
+            margin-top: 20px;
+        }
+
+        #proceed-to-checkout {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 30px; /* Increased size */
+            font-size: 1.2em; /* Increased font size */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #proceed-to-checkout:hover {
+            background-color: #0056b3;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html">Cart</a>
+    <a href="checkout.html">Checkout</a>
+    <a href="contact.html">Contact</a>
+</div>
+
+<!-- Cart Section -->
+<div class="cart">
+    <h1>Your Cart</h1>
+    <table id="cart-table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Cart items will be inserted here by JavaScript -->
+        </tbody>
+    </table>
+    <div class="total">
+        <strong>Total Price: $<span id="total-price">0.00</span></strong>
+    </div>
+</div>
+<div class="checkout-button">
+    <a href="checkout.html">
+        <button id="proceed-to-checkout">Proceed to Checkout</button>
+    </a>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const cartTableBody = document.querySelector('#cart-table tbody');
+        const totalPriceElement = document.getElementById('total-price');
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function updateCart() {
+            cartTableBody.innerHTML = '';
+            let totalPrice = 0;
+
+            cart.forEach((item, index) => {
+                const row = document.createElement('tr');
+                
+                row.innerHTML = `
+                    <td>${item.product}</td>
+                    <td>$${item.price.toFixed(2)}</td>
+                    <td>${item.quantity}</td>
+                    <td>$${(item.price * item.quantity).toFixed(2)}</td>
+                    <td><button onclick="removeFromCart(${index})">Remove</button></td>
+                `;
+                
+                cartTableBody.appendChild(row);
+                totalPrice += item.price * item.quantity;
+            });
+
+            // Animate the total price update
+            totalPriceElement.style.animation = 'fadeInOut 1s forwards';
+            setTimeout(() => {
+                totalPriceElement.style.animation = '';
+                totalPriceElement.textContent = totalPrice.toFixed(2);
+            }, 1000);
+        }
+
+        window.removeFromCart = (index) => {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCart();
+        };
+
+        updateCart();
+    });
+</script>
+
+</body>
+</html>

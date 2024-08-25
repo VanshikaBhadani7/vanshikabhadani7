@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - E-Commerce Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .section {
+            padding: 20px;
+        }
+
+        .home-banner {
+            text-align: center;
+            background: linear-gradient(135deg, #f06, #f79);
+            color: white;
+            padding: 60px 20px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .home-banner::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: move 5s linear infinite;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateX(-50%) translateY(-50%);
+            }
+            100% {
+                transform: translateX(50%) translateY(50%);
+            }
+        }
+
+        .home-banner h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .home-banner p {
+            font-size: 1.2em;
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            width: calc(25% - 20px);
+            box-sizing: border-box;
+            text-align: center;
+            background: #f9f9f9;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .add-to-cart {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .add-to-cart:hover {
+            background-color: #218838;
+        }
+
+        @media (max-width: 768px) {
+            .product {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product {
+                width: calc(100% - 20px);
+            }
+        }
+
+        /* Article Section */
+        .article-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f4f1f3;
+            border-radius: 10px;
+        }
+
+        .article-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2em;
+            color: #f00861;
+        }
+
+        .article {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .article:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .article img {
+            width: 15%;
+            border-radius: 20px;
+        }
+
+        .article-content {
+            width: 85%;
+            padding: 0 20px;
+        }
+
+        .article-content h3 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #555;
+        }
+
+        .article-content p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #a29aa8;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html">Cart</a>
+    <a href="contact.html">Contact</a>
+</div>
+
+<!-- Home Section -->
+<div class="section" id="home">
+    <div class="home-banner">
+        <h1>Welcome to Healthy Store</h1>
+        <p>Discover our latest collections and exclusive offers!</p>
+    </div>
+    <!-- Featured Products -->
+    <h3 style="text-align: center;">Health Care Products</h3>
+
+    
+<!-- Article Section -->
+<div class="article-section">
+    <h2>Learn More About Our Health Care Products</h2>
+
+    <div class="article">
+        <img src="https://cdn.tirabeauty.com/v2/billowing-snowflake-434234/tira-p/wrkr/products/pictures/item/free/resize-w:540/1107018/-DjjeRbolc-8906087775690_1.jpg" alt="Vitamin C Serum">
+        <div class="article-content">
+            <h3>Vitamin C Serum: Brighten Your Skin</h3>
+            <p>Vitamin C Serum: Brighten Your Skin
+
+                Vitamin C Serum is your go-to for a radiant, youthful complexion. Packed with antioxidants, it protects your skin from environmental damage while fading dark spots and evening out skin tone. It also boosts collagen production, reducing fine lines and giving your skin a firmer, plumper look. Regular use hydrates the skin, improves texture, and soothes redness, leaving your skin glowing and refreshed. Perfect for daily use, just apply a few drops on a clean face, follow with moisturizer, and top with sunscreen for best results. Your skin will thank you!</p>
+        </div>
+    </div>
+
+    <div class="article">
+        <img src="https://cdn.tirabeauty.com/v2/billowing-snowflake-434234/tira-p/wrkr/products/pictures/item/free/resize-w:540/949753/Zy6ZIUEPKG-949753_1.jpg" alt="Multivitamin Tablets">
+        <div class="article-content">
+            <h3>Multivitamin Tablets: Daily Health Boost</h3>
+            <p>Multivitamin Tablets: Daily Health Boost
+
+                Multivitamin Tablets are your go-to for comprehensive daily nutrition. Packed with essential vitamins and minerals, these tablets support everything from energy production and immune defense to heart health and cognitive function. They are designed to fill any nutritional gaps in your diet, ensuring you receive the vital nutrients necessary for optimal health.
+                
+                Taking one tablet daily can help improve your energy levels, enhance your immune system, support bone health, and promote glowing skin and strong hair. These multivitamins also contribute to better mental clarity and mood stability, making them an excellent addition to your daily routine.
+                
+                Whether you lead a busy lifestyle or want to ensure you're covering all your nutritional bases, Multivitamin Tablets offer an easy and effective way to boost your overall health and wellness every day.</p>
+        </div>
+    </div>
+
+    <div class="article">
+        <img src="https://i5.walmartimages.com/asr/60ef5782-2ea1-429c-a9cd-d0414f609d11_1.4fb5357ebb29fef237f97bbc35f8deb1.jpeg" alt="Omega-3 Fish Oil">
+        <div class="article-content">
+            <h3>Omega-3 Fish Oil: Heart and Brain Support</h3>
+            <p>Omega-3 Fish Oil: Heart and Brain Support
+
+                Omega-3 Fish Oil is essential for maintaining a healthy heart and brain. Rich in EPA and DHA, these fatty acids reduce inflammation, support cardiovascular health, and enhance cognitive function. Regular intake can lower triglyceride levels, improve blood circulation, and protect against heart disease.
+                
+                For the brain, Omega-3s help improve memory, focus, and overall mental clarity. They also support mood regulation and may reduce symptoms of anxiety and depression.
+                
+                Incorporating Omega-3 Fish Oil into your daily routine is a simple way to boost both heart and brain health, contributing to overall well-being.</p>
+        </div>
+    </div>
+
+    <!-- Add more articles as needed -->
+
+</div>
+
+
+
+    <div class="products">
+        <!-- List of 10 health care products -->
+        <div class="product">
+            <img src="https://cdn.tirabeauty.com/v2/billowing-snowflake-434234/tira-p/wrkr/products/pictures/item/free/resize-w:540/1107018/-DjjeRbolc-8906087775690_1.jpg" alt="Health Care Product 1">
+            <h3>Vitamin C Serum</h3>
+            <p class="price">$15</p>
+            <button class="add-to-cart" data-product="Vitamin C Serum" data-price="15">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://cdn.tirabeauty.com/v2/billowing-snowflake-434234/tira-p/wrkr/products/pictures/item/free/resize-w:540/949753/Zy6ZIUEPKG-949753_1.jpg" alt="Health Care Product 2">
+            <h3>Multivitamin Tablets</h3>
+            <p class="price">$25</p>
+            <button class="add-to-cart" data-product="Multivitamin Tablets" data-price="25">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://i5.walmartimages.com/asr/60ef5782-2ea1-429c-a9cd-d0414f609d11_1.4fb5357ebb29fef237f97bbc35f8deb1.jpeg" alt="Health Care Product 3">
+            <h3>Omega-3 Fish Oil</h3>
+            <p class="price">$35</p>
+            <button class="add-to-cart" data-product="Omega-3 Fish Oil" data-price="35">Add to Cart</button>
+        </div>
+        
+        <div class="product">
+            <img src="https://shop.tcdirect.co.za/content/images/thumbs/6333f3e91d006f7baa666618_joint-support-capsules-60s_550.png" alt="Health Care Product 5">
+            <h3>Joint Support Capsules</h3>
+            <p class="price">$55</p>
+            <button class="add-to-cart" data-product="Joint Support Capsules" data-price="55">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://i5.walmartimages.com/asr/eba8b26e-aa15-46d8-b47e-0131d1157c30.6cd2547164a2556f7690d676fabad0a3.jpeg" alt="Health Care Product 6">
+            <h3>Melatonin Sleep Aid</h3>
+            <p class="price">$65</p>
+            <button class="add-to-cart" data-product="Melatonin Sleep Aid" data-price="65">Add to Cart</button>
+        </div>
+        
+        <div class="product">
+            <img src="https://www.cscvitamins.com/wp-content/uploads/2021/02/immune-support-powder-front.jpg" alt="Health Care Product 8">
+            <h3>Immune Support Powder</h3>
+            <p class="price">$85</p>
+            <button class="add-to-cart" data-product="Immune Support Powder" data-price="85">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://happyleefitness.com/wp-content/uploads/2015/06/energy-boost.jpg" alt="Health Care Product 9">
+            <h3>Energy Boost Capsules</h3>
+            <p class="price">$95</p>
+            <button class="add-to-cart" data-product="Energy Boost Capsules" data-price="95">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://supliful.com/_next/image?url=https:%2F%2Fsupliful.s3.amazonaws.com%2Fproducts%2Fimages%2F20220824133915-vox4dige-digestive-enzyme-pro-blend.png&w=992&q=75" alt="Health Care Product 10">
+            <h3>Digestive Enzyme Blend</h3>
+            <p class="price">$105</p>
+            <button class="add-to-cart" data-product="Digestive Enzyme Blend" data-price="105">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://th.bing.com/th/id/OIP.qN9PKjIPPShe7kOWde4o4gAAAA?rs=1&pid=ImgDetMain" alt="Health Care Product 7">
+            <h3>Anti-Aging Cream</h3>
+            <p class="price">$75</p>
+            <button class="add-to-cart" data-product="Anti-Aging Cream" data-price="75">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://cdn.lifehack.org/wp-content/uploads/2020/08/33.jpg" alt="Health Care Product 4">
+            <h3>Probiotic Supplements</h3>
+            <p class="price">$45</p>
+            <button class="add-to-cart" data-product="Probiotic Supplements" data-price="45">Add to Cart</button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const cartButtons = document.querySelectorAll('.add-to-cart');
+        
+        cartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const product = button.getAttribute('data-product');
+                const price = parseFloat(button.getAttribute('data-price'));
+                addToCart(product, price);
+            });
+        });
+    });
+
+    function addToCart(product, price) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let item = cart.find(item => item.product === product);
+
+        if (item) {
+            item.quantity++;
+        } else {
+            cart.push({ product, price, quantity: 1 });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`${product} has been added to your cart at $${price}`);
+    }
+</script>
+
+</body>
+</html>
